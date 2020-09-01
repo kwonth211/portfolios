@@ -15,16 +15,16 @@ const Footer: FC<{ pageEvent: Function; component?: JSX.Element | undefined | nu
           color: component ? "black" : "white",
           background: component ? "white" : "rgb(25,25,25)",
           // background: "white",
+          cursor: "pointer",
           position: "fixed",
           bottom: 0,
           width: "100%",
         }}
+        onClick={() => {
+          pageEvent()
+        }}
       >
-        <PageButton
-          onClick={() => {
-            pageEvent()
-          }}
-        >
+        <PageButton>
           다음 페이지
           <br />⥥
         </PageButton>

@@ -1,13 +1,8 @@
-import styled, { keyframes } from "styled-components"
-import { TransitionGroup } from "react-transition-group"
+import { keyframes } from "styled-components"
 import React, { FC } from "react"
 import "./style.css"
-// import { ReactCSSTransitionGroup } from "react-addons-css-transition-group"
-// import { CSSTransitionGroup } from "react-addons-css-transition-group"
-import * as ReactCSSTransitionGroup from "react-addons-css-transition-group"
 import { CSSTransition } from "react-transition-group"
 import { Footer } from "./../footer"
-// const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup
 export const buttonFade = keyframes`
     from {
         visibility: visibility;

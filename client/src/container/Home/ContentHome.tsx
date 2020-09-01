@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import { Layout, Breadcrumb } from "antd"
+import { Layout } from "antd"
 import { ContentDiv, CenterDiv } from "../../common/StyledComponents"
 const { Content } = Layout
 const ContentHome: FC = () => {

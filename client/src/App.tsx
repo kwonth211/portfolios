@@ -1,4 +1,4 @@
-import React, { useState, JSXElementConstructor } from "react"
+import React, { useState } from "react"
 import { Header } from "./header"
 import "antd/dist/antd.css"
 import { ContentAbout, ContentHome } from "./container"

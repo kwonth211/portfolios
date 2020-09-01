@@ -1,9 +1,9 @@
 import React, { FC } from "react"
-import { Layout, Breadcrumb } from "antd"
-import { ContentDiv } from "../../common/StyledComponents"
-import { Footer } from "./../../footer"
+// import { Layout, Breadcrumb } from "antd"
+// import { ContentDiv } from "../../common/StyledComponents"
+// import { Footer } from "./../../footer"
 
-const { Content } = Layout
+// const { Content } = Layout
 
 const ContentAbout: FC = () => {
   return (
