@@ -4,23 +4,12 @@ import { GithubOutlined } from "@ant-design/icons"
 import styled from "styled-components"
 const { Header: Head } = Layout
 
-const Logo = styled.div`
-  width: 120px;
-  height: 31px;
-  color: white;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px 20px 16px 0;
-  float: left;
-  bottom: 50%;
-  display: inline-block;
-`
-
-const Header: FC = () => {
+const Header: FC<{ component: JSX.Element | null }> = ({ component }) => {
   return (
-    <Layout className="layout">
-      <Head>
-        <Logo></Logo>
-        <Menu style={{ float: "right" }} theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
+    <Layout className="layout" style={{ position: "fixed", width: "100%", float: "right" }}>
+      <Head style={{ background: component ? "white" : "rgb(25,25,25)", zIndex: 1 }}>
+        {/* <Logo></Logo> */}
+        <Menu style={{ float: "right", color: "black", opacity: "0.5", zIndex: 1 }} theme="light" mode="horizontal" defaultSelectedKeys={["1"]}>
           <Menu.Item key="1">Home</Menu.Item>
           <Menu.Item key="2">About</Menu.Item>
           <Menu.Item key="3">Skill</Menu.Item>
