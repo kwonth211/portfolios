@@ -1,8 +1,9 @@
 import { keyframes } from "styled-components"
-import React, { FC } from "react"
+import React, { FC, ReactNode } from "react"
 import "./style.css"
 import { CSSTransition } from "react-transition-group"
 import { Footer } from "./../footer"
+import { ContentAbout } from "./../container/"
 export const buttonFade = keyframes`
     from {
         visibility: visibility;
@@ -18,13 +19,13 @@ export const buttonFade = keyframes`
     }
     `
 
-export const PageAnimation: FC<{ component: any; pageEvent: any }> = ({ component: Component, pageEvent }) => {
+export const PageAnimation: FC<{ component: ReactNode; pageEvent: any }> = ({ component: Component, pageEvent }) => {
   return (
     <CSSTransition in={true} timeout={400} classNames="list-transition" unmountOnExit appear>
-      <>
+      <div className="list-body">
         {Component}
-        <Footer pageEvent={pageEvent} />
-      </>
+        {/* <Footer pageEvent={pageEvent} type={"next"} /> */}
+      </div>
     </CSSTransition>
   )
 }

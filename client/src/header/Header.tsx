@@ -1,9 +1,9 @@
-import React, { FC } from "react"
+import React, { FC, useEffect, ReactNode } from "react"
 import { Layout, Menu } from "antd"
 import { GithubOutlined } from "@ant-design/icons"
 const { Header: Head } = Layout
 
-const Header: FC<{ component: JSX.Element | null }> = ({ component }) => {
+const Header: FC<{ component: ReactNode | null }> = ({ component }) => {
   return (
     <Layout className="layout" style={{ position: "fixed", width: "100%", top: 0, float: "right" }}>
       <Head style={{ background: component ? "white" : "rgb(25,25,25)", zIndex: 1 }}>

@@ -3,21 +3,23 @@ import { Layout } from "antd"
 
 import { PageButton } from "./../common/StyledComponents"
 // import * as ReactCSSTransitionGroup from "react-addons-css-transition-group"
+import styled from "styled-components"
 
 const { Footer: FooterView } = Layout
+
 // ⥣⥤
-const Footer: FC<{ pageEvent: Function; component?: JSX.Element | undefined | null }> = ({ pageEvent, component }) => {
+const Footer: FC<{ pageEvent: Function; component?: JSX.Element | undefined | null; type: string }> = ({ pageEvent, component, type }) => {
   return (
     <>
       <FooterView
         style={{
           textAlign: "center",
-          color: component ? "black" : "white",
-          background: component ? "white" : "rgb(25,25,25)",
-          // background: "white",
+          color: component || type === "prev" ? "black" : "white",
+          background: component || type === "prev" ? "white" : "rgb(25,25,25)",
           cursor: "pointer",
-          position: "fixed",
-          bottom: 0,
+          position: type === "prev" ? "unset" : "fixed",
+          bottom: type === "prev" ? "" : 0,
+          top: type === "prev" ? 0 : "",
           width: "100%",
         }}
         onClick={() => {
