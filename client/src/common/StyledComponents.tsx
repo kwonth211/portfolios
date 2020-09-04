@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { buttonFade } from "./Animation"
 
 interface IContentDiv {
@@ -8,6 +8,10 @@ interface ICenterDiv {
   left: string
   top: string
   fontSize: string
+}
+
+interface IPageButtion {
+  animation?: boolean
 }
 export const ContentDiv = styled.div<IContentDiv>`
   background: rgb(25, 25, 25);
@@ -35,11 +39,14 @@ export const CenterDiv = styled.div`
   line-height: 50px;
 `
 
-export const PageButton = styled.button`
+export const PageButton = styled.button<IPageButtion>`
   background: inherit;
   border: 0px;
   z-index: 1;
   cursor: pointer;
-  animation: ${buttonFade} 300ms steps(5, start) infinite alternate;
-  -webkit-animation: ${buttonFade} 300ms steps(5, start) infinite alternate;
+  ${(props) =>
+    props.animation &&
+    css`
+      animation: ${buttonFade} 300ms steps(5, start) infinite alternate;
+    `}
 `

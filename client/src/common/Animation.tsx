@@ -1,8 +1,8 @@
 import { keyframes } from "styled-components"
-import React, { FC, ReactNode } from "react"
+import React, { FC, ReactNode, useEffect } from "react"
 import "./style.css"
 import { CSSTransition } from "react-transition-group"
-import { Footer } from "./../footer"
+import { NextPage, PrevPage } from "./../footer"
 import { ContentAbout } from "./../container/"
 export const buttonFade = keyframes`
     from {
@@ -19,12 +19,23 @@ export const buttonFade = keyframes`
     }
     `
 
+/// animation padding 지우기..
 export const PageAnimation: FC<{ component: ReactNode; pageEvent: any }> = ({ component: Component, pageEvent }) => {
+  useEffect(() => {
+    console.log(Component)
+    debugger
+  }, [Component])
   return (
     <CSSTransition in={true} timeout={400} classNames="list-transition" unmountOnExit appear>
       <div className="list-body">
+        <PrevPage
+          type={"next"}
+          component={Component}
+          pageEvent={() => {
+            pageEvent("about")
+          }}
+        />
         {Component}
-        {/* <Footer pageEvent={pageEvent} type={"next"} /> */}
       </div>
     </CSSTransition>
   )

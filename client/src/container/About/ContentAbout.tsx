@@ -1,18 +1,13 @@
 import React, { FC, useEffect, useState, FunctionComponent, createRef, useRef } from "react"
 import { Layout, Tag, Steps, Divider, Popover } from "antd"
-import { DownOutlined, SolutionOutlined } from "@ant-design/icons"
-
-// import { ContentDiv } from "../../common/StyledComponents"
-import { Footer } from "./../../footer"
 import "./style.css"
-import { CSSTransition } from "react-transition-group"
 const { Content } = Layout
 const { Step } = Steps
 
 const histroyData = [
   {
     title: "명지전문대학",
-    description: "명지전문대학",
+    description: "2013/02 ~ 2018/02",
   },
   {
     title: "인재 개발원",
@@ -45,36 +40,47 @@ const ContentAbout: FunctionComponent = () => {
       }, 20)
     }
 
-    return () => {}
+    return () => {
+      clearInterval(interval.current)
+      // let a = document.getElementsByClassName("list-body")
+      // debugger
+    }
   }, [])
   let x = 120
-  let y = 80
+  let y = 100
   let z = 15
   let p = 10
   let count = 0
   const humanDrawing = (ctx: any) => {
-    if (y > -10) {
+    console.log(y)
+    if (y > 15) {
       ctx.clearRect(0, 0, 400, 400)
       ctx.beginPath()
       ctx.arc(x, y, 7, 0, 2 * Math.PI)
       ctx.moveTo(x - 5, y + 5)
-      ctx.lineTo(x - 5, y + 30) //몸
+      ctx.lineTo(x - 5, y + 25) //몸
 
-      ctx.moveTo(x - 6, y + 30)
-      ctx.lineTo(x + 7, y + 65) //오른쪽다리
+      let count = 0
+      setInterval(() => {
+        if (count < 50) {
+          ctx.moveTo(x - 6, y + 25)
+          ctx.lineTo(x + 7, y + 45) //오른쪽다리
+        } else {
+          // ctx.moveTo(x - 6, y + 25)
+          // ctx.lineTo(x + 7, y + 35) //오른쪽다리
 
-      // setInterval(() => {
-      //   ctx.moveTo(x, y + 20)
+          ctx.moveTo(x - 6, y + 35)
+          ctx.lineTo(x + 7, y + 45) //오른쪽다리
 
-      //   ctx.lineTo(x + z, y + p) //오른쪽다리
+          if (count > 100) count = 0
+        }
 
-      //   z += 0.1
-      //   p += 0.1
-      //   ctx.stroke()
-      // }, 10)
+        ctx.stroke()
+        count++
+      }, 10)
 
-      ctx.moveTo(x - 6, y + 30)
-      ctx.lineTo(x - 15, y + 65) //왼쪽다리
+      ctx.moveTo(x - 6, y + 25)
+      ctx.lineTo(x - 15, y + 45) //왼쪽다리
       ctx.stroke()
 
       x += 1.5

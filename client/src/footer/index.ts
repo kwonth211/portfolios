@@ -1,1 +1,2 @@
-export { default as Footer } from "./footer"
+export { NextPage, PrevPage } from "./footer"
+// export { Footer } from "./footer"
