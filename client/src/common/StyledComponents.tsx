@@ -1,12 +1,10 @@
 import styled, { css } from "styled-components"
 import { buttonFade } from "./Animation"
 
-interface IContentDiv {
-  minHeight: string
-}
+interface IContentDiv {}
 interface ICenterDiv {
-  left: string
-  top: string
+  // left: string
+  // top: string
   fontSize: string
 }
 
@@ -16,7 +14,7 @@ interface IPageButtion {
 export const ContentDiv = styled.div<IContentDiv>`
   background: rgb(25, 25, 25);
   width: 100vw;
-  height: 93vh;
+  height: 90vh;
   -webkit-box-shadow: 0 10px 6px -6px rgb(221, 221, 221);
   -moz-box-shadow: 0 10px 6px -6px rgb(221, 221, 221);
   box-shadow: 0 10px 6px -6px rgb(221, 221, 221);
@@ -24,8 +22,6 @@ export const ContentDiv = styled.div<IContentDiv>`
 export const CenterDiv = styled.div`
   color: white;
   font-size: ${(props: ICenterDiv) => props.fontSize};
-  // top: ${(props: ICenterDiv) => props.top};
-  // left: ${(props: ICenterDiv) => props.left};
   position: absolute;
   left: 0;
   top: 0;

@@ -6,25 +6,11 @@
   box-sizing: border-box;
   width: 100%;
   height: 90%;
-  padding: 130px 0px 0px 0px;
+  /* padding: 20px 0px 0px 0px; */
   margin-top: 67px;
   /* margin-bottom: 300px; */
   overflow: hidden;
   /* border-radius: 5px; */
-}
-
-.list {
-  padding: 0;
-  list-style-type: none;
-}
-
-.list-item {
-  padding: 5px 0;
-}
-
-.list-item--active {
-  /* color: blue;
-  transition: color 1500ms; */
 }
 
 /* This fires as soon as the element enters the dorm */
@@ -35,9 +21,6 @@
   top: 99%;
   width: 100%;
   max-height: 70%;
-  /* border: 1px solid black; */
-  /* box-shadow: 5px 5px 5px 5px black; */
-  /* background-color: #5a564c; */
 }
 /* This is where we can add the transition*/
 .list-transition-enter-active,
@@ -47,24 +30,71 @@
   width: 100%;
   max-height: 100%;
   background-color: white;
-  transition: all 500ms;
+  transition: all 900ms;
 }
 
 /* This fires as soon as the this.state.showList is false */
 .list-transition-exit {
-  top: 345px;
-  width: 200px;
-  max-height: 200px;
-
-  background-color: white;
+  top: 0%;
+  width: 100%;
+  max-height: 100%;
+  height: 100%;
+  /* background-color: black; */
 }
-/* fires as element leaves the DOM*/
 .list-transition-exit-active {
-  top: 345px;
-  width: 120px;
-  max-height: 40px;
-  /* color: transparent; */
-  border: 1px solid black;
-  background-color: red;
-  transition: all 3000ms;
+  top: -90%;
+  height: 0%;
+
+  transition: all 1300ms;
+}
+
+/* ㄴㅇㅁㄴㅇㄴㅁ*/
+.list-body2 {
+  position: absolute;
+  top: -7%;
+  z-index: 0;
+  background-color: white;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  /* padding: 20px 0px 0px 0px; */
+  margin-top: 67px;
+  /* margin-bottom: 300px; */
+  overflow: hidden;
+  /* border-radius: 5px; */
+}
+
+/* This fires as soon as the element enters the dorm */
+.list-transition2-enter,
+.list-transition2-appear {
+  /* 이 쪽이 애니메이션 */
+  /*We give the list the initial dimension of the list button*/
+  top: 99%;
+  width: 100%;
+  /* max-height: 80%; */
+}
+/* This is where we can add the transition*/
+.list-transition2-enter-active,
+.list-transition2-appear-active {
+  top: -7%;
+  /* height: 90%; */
+  width: 100%;
+  /* max-height: 70%; */
+  background-color: white;
+  transition: all 800ms;
+}
+
+/* This fires as soon as the this.state.showList is false */
+.list-transition2-exit {
+  top: 0%;
+  width: 100%;
+  max-height: 90%;
+  height: 100%;
+  /* background-color: black; */
+}
+.list-transition2-exit-active {
+  top: 100%;
+  height: 0%;
+
+  transition: all 1200ms;
 }

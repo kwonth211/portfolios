@@ -1,2 +1,1 @@
-export { NextPage, PrevPage } from "./footer"
-// export { Footer } from "./footer"
+export { PageComponent } from "./footer"

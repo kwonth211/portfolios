@@ -1,9 +1,8 @@
 import { keyframes } from "styled-components"
-import React, { FC, ReactNode, useEffect } from "react"
+import React, { FC, ReactNode, useEffect, useState } from "react"
 import "./style.css"
 import { CSSTransition } from "react-transition-group"
-import { NextPage, PrevPage } from "./../footer"
-import { ContentAbout } from "./../container/"
+import { PageComponent } from "./../footer"
 export const buttonFade = keyframes`
     from {
         visibility: visibility;
@@ -20,23 +19,52 @@ export const buttonFade = keyframes`
     `
 
 /// animation padding 지우기..
-export const PageAnimation: FC<{ component: ReactNode; pageEvent: any }> = ({ component: Component, pageEvent }) => {
+export const PageAnimation: FC<{ component: ReactNode[]; pageEvent: any; animationMoveType: string; page: number }> = ({ component: Component, pageEvent, animationMoveType, page }) => {
+  const [flag, setFlag] = useState(true)
   useEffect(() => {
-    console.log(Component)
-    debugger
-  }, [Component])
-  return (
-    <CSSTransition in={true} timeout={400} classNames="list-transition" unmountOnExit appear>
-      <div className="list-body">
-        <PrevPage
-          type={"next"}
-          component={Component}
-          pageEvent={() => {
-            pageEvent("about")
-          }}
-        />
-        {Component}
-      </div>
-    </CSSTransition>
-  )
+    setFlag(false)
+  }, [Component, page])
+
+  if (animationMoveType === "next") {
+    return (
+      <>
+        <CSSTransition in={flag} timeout={2000} classNames="list-transition" unmountOnExit appear>
+          <div className="list-body">{Component[page - 1]}</div>
+        </CSSTransition>
+        <CSSTransition in={!flag} timeout={2000} classNames="list-transition" unmountOnExit appear>
+          <div className="list-body">
+            <PageComponent
+              page={page}
+              type={"prev"}
+              pageEvent={() => {
+                pageEvent("prev")
+              }}
+            />
+            {Component[page]}
+          </div>
+        </CSSTransition>
+      </>
+    )
+  } else {
+    return (
+      <>
+        <CSSTransition in={!flag} timeout={1500} classNames="list-transition2" unmountOnExit appear>
+          <div className="list-body2">{Component[page]}</div>
+        </CSSTransition>
+        <CSSTransition in={flag} timeout={1500} classNames="list-transition2" unmountOnExit appear>
+          <div className="list-body2">
+            <PageComponent
+              page={page}
+              type={"prev"}
+              pageEvent={() => {
+                pageEvent("prev")
+              }}
+            />
+
+            {Component[page + 1]}
+          </div>
+        </CSSTransition>
+      </>
+    )
+  }
 }

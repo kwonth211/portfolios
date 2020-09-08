@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from "react"
+import React, { FC, ReactNode, useEffect, useState } from "react"
 import { Layout } from "antd"
 
 import { PageButton } from "./../common/StyledComponents"
@@ -7,58 +7,56 @@ import styled from "styled-components"
 
 const { Footer: FooterView } = Layout
 
-// ⥣⥤
-export const NextPage: FC<{ pageEvent: Function; component?: ReactNode | undefined | null; type: string }> = ({ pageEvent, component, type }) => {
-  return (
-    <>
-      <FooterView
-        style={{
-          textAlign: "center",
-          color: component ? "black" : "white",
-          background: component ? "white" : "rgb(25,25,25)",
-          cursor: "pointer",
-          position: "fixed",
-          bottom: 0,
-          // top: type === "prev" ? 0 : "",
-          width: "100%",
-        }}
-        onClick={() => {
-          pageEvent()
-        }}
-      >
-        <PageButton animation={true}>
-          다음 페이지
-          <br />⥥
-        </PageButton>
-      </FooterView>
-    </>
-  )
+interface IPageButton {
+  page: number
+  type: string
+  delayFlag: boolean
 }
 
-export const PrevPage: FC<{ pageEvent: Function; component?: ReactNode | undefined | null; type: string }> = ({ pageEvent, component, type }) => {
+const StyledContent = styled(FooterView)<IPageButton>`
+  text-align: center;
+  color: ${(props) => (props.delayFlag ? "black" : props.page < 1 ? "white" : "black")};
+  background: ${(props) => (props.delayFlag ? "white" : props.page < 1 ? "rgb(25,25,25)" : "white")};
+  margin-bottom: ${(props) => (props.type === "prev" ? "60px" : "")};
+  cursor: pointer;
+  z-index: 0;
+  width: 100%;
+`
+
+// ⥣⥤
+export const PageComponent: FC<{ pageEvent: any; type: string; page: number }> = ({ pageEvent, type, page }) => {
+  let [delayFlag, setDelayFlag] = useState(false)
+
+  useEffect(() => {
+    if (type === "prev") {
+      setTimeout(() => {
+        setDelayFlag(true)
+      }, 1000)
+    }
+  }, [])
+
   return (
     <>
-      <FooterView
-        style={{
-          textAlign: "center",
-          color: component ? "black" : "white",
-          background: component ? "white" : "rgb(25,25,25)",
-          cursor: "pointer",
-          position: "fixed",
-          bottom: 100,
-          top: "10%",
-          width: "100%",
-          height: "100px",
-        }}
+      <StyledContent
+        page={page}
+        type={type}
+        delayFlag={delayFlag}
         onClick={() => {
-          pageEvent()
+          pageEvent("next")
         }}
       >
-        <PageButton color={"black"}>
-          ⥣ <br />
-          이전 페이지
-        </PageButton>
-      </FooterView>
+        {type === "prev" ? (
+          <PageButton>
+            ⥣ <br />
+            이전 페이지
+          </PageButton>
+        ) : (
+          <PageButton animation={true}>
+            다음 페이지
+            <br />⥥
+          </PageButton>
+        )}
+      </StyledContent>
     </>
   )
 }

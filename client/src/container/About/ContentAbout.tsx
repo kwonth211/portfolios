@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState, FunctionComponent, createRef, useRef } from "react"
 import { Layout, Tag, Steps, Divider, Popover } from "antd"
-import "./style.css"
+import { PageComponent } from "./../../footer"
+
 const { Content } = Layout
 const { Step } = Steps
 
@@ -118,18 +119,6 @@ const ContentAbout: FunctionComponent = () => {
     }
   }, [current])
 
-  const customDot = (dot: any) => (
-    <Popover
-      content={
-        <span>
-          dsadas
-          {/* step {index} status: {status} */}
-        </span>
-      }
-    >
-      {dot}
-    </Popover>
-  )
   return (
     <div>
       <Content style={{ paddingTop: "140px", padding: "0 50px", width: "80%", margin: "0 auto", boxShadow: "5px 5px 10px 0px rgb(128,128,128)" }}>
@@ -157,6 +146,14 @@ const ContentAbout: FunctionComponent = () => {
         </Steps>
         <Divider />
       </Content>
+
+      <PageComponent
+        type={"next"}
+        page={2}
+        pageEvent={() => {
+          // pageEvent("next")
+        }}
+      />
     </div>
   )
 }
