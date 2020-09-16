@@ -32,8 +32,8 @@ const ContentHome: FC<{ pageEvent: any }> = ({ pageEvent }) => {
           text = text.concat(helloText.pop() || "")
         } else {
           //
-          if (helloText.length === 0 && introduceText.length === 0) {
-            text = text.concat(<br />)
+          if (helloText.length === 0 && introduceText.length === 27) {
+            text = text.concat(<br key={"br"} />)
           }
           text = text.concat(introduceText.pop() || "")
           if (introduceText.length === 0) clearInterval(interval.current)
@@ -43,6 +43,7 @@ const ContentHome: FC<{ pageEvent: any }> = ({ pageEvent }) => {
     }, 1000)
 
     return () => {
+      setText([])
       clearInterval(interval.current)
     }
   }, [])

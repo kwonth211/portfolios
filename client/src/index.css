@@ -11,7 +11,7 @@
   float: left;
 }
 [data-theme="dark"] .site-layout-content {
-  background: #141414;
+  /* background: #141414; */
 }
 [data-theme="dark"] .logo {
   background: rgba(125, 255, 255, 0.3);

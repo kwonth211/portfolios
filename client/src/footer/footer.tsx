@@ -17,10 +17,12 @@ const StyledContent = styled(FooterView)<IPageButton>`
   text-align: center;
   color: ${(props) => (props.delayFlag ? "black" : props.page < 1 ? "white" : "black")};
   background: ${(props) => (props.delayFlag ? "white" : props.page < 1 ? "rgb(25,25,25)" : "white")};
-  margin-bottom: ${(props) => (props.type === "prev" ? "60px" : "")};
+  margin-bottom: ${(props) => (props.type === "prev" ? "30px" : "")};
   cursor: pointer;
   z-index: 0;
-  width: 100%;
+  ${(props) => (props.type === "next" ? "bottom:0;" : "")};
+  // position: fixed;
+  // width: 100%;
 `
 
 // ⥣⥤

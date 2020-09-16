@@ -22,8 +22,14 @@ export const buttonFade = keyframes`
 export const PageAnimation: FC<{ component: ReactNode[]; pageEvent: any; animationMoveType: string; page: number }> = ({ component: Component, pageEvent, animationMoveType, page }) => {
   const [flag, setFlag] = useState(true)
   useEffect(() => {
+    if (animationMoveType === "next") {
+      setTimeout(() => {
+        setFlag(true)
+        setFlag(false)
+      })
+    }
     setFlag(false)
-  }, [Component, page])
+  }, [Component, page, animationMoveType])
 
   if (animationMoveType === "next") {
     return (
@@ -41,6 +47,7 @@ export const PageAnimation: FC<{ component: ReactNode[]; pageEvent: any; animati
               }}
             />
             {Component[page]}
+            <PageComponent type={"next"} page={1} pageEvent={pageEvent} />
           </div>
         </CSSTransition>
       </>
@@ -62,6 +69,7 @@ export const PageAnimation: FC<{ component: ReactNode[]; pageEvent: any; animati
             />
 
             {Component[page + 1]}
+            <PageComponent type={"next"} page={1} pageEvent={pageEvent} />
           </div>
         </CSSTransition>
       </>

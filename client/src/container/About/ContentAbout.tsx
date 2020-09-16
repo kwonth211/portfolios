@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState, FunctionComponent, createRef, useRef } from "react"
 import { Layout, Tag, Steps, Divider, Popover } from "antd"
 import { PageComponent } from "./../../footer"
+import { ContentDiv, CenterDiv } from "../../common/StyledComponents"
 
 const { Content } = Layout
 const { Step } = Steps
@@ -11,7 +12,7 @@ const histroyData = [
     description: "2013/02 ~ 2018/02",
   },
   {
-    title: "인재 개발원",
+    title: "응용 SW개발자 양성과정",
     description: "2018/08 ~ 2019/03",
   },
   {
@@ -24,8 +25,72 @@ const histroyData = [
   },
 ]
 
+let x = 120
+let y = 100
+let z = 15
+let p = 10
+let count = 0
+const humanDrawing = (ctx: any) => {
+  console.log(y)
+  if (y > 15) {
+    ctx.clearRect(0, 0, 400, 400)
+    ctx.beginPath()
+    ctx.arc(x, y, 7, 0, 2 * Math.PI)
+    ctx.moveTo(x - 5, y + 5)
+    ctx.lineTo(x - 5, y + 25) //몸
+
+    let count = 0
+    setInterval(() => {
+      if (count < 50) {
+        ctx.moveTo(x - 6, y + 25)
+        ctx.lineTo(x + 7, y + 45) //오른쪽다리
+      } else {
+        // ctx.moveTo(x - 6, y + 25)
+        // ctx.lineTo(x + 7, y + 35) //오른쪽다리
+
+        ctx.moveTo(x - 6, y + 35)
+        ctx.lineTo(x + 7, y + 45) //오른쪽다리
+
+        if (count > 100) count = 0
+      }
+
+      ctx.stroke()
+      count++
+    }, 10)
+
+    ctx.moveTo(x - 6, y + 25)
+    ctx.lineTo(x - 15, y + 45) //왼쪽다리
+    ctx.stroke()
+
+    x += 1.5
+    y -= 0.8
+  }
+}
+
+let x_2 = 135
+let y_2 = 135
+
+const stairsDrawing = (ctx: any) => {
+  let x = 135
+  let y = 135
+  for (let i = 0; i < 10; i++) {
+    ctx.rect(x, y, 20, 350)
+    x += 20
+    y -= 10
+  }
+
+  // ctx.fillStyle = "1px solid black"
+  ctx.border = "1px solid red"
+  ctx.fill()
+  ctx.closePath()
+  x -= 0.5
+  y -= 0.8
+  // x_2 += 0.05
+  // y_2 += 0.08
+}
+
 const tagData = ["front-end", "back-end", "javascript", "typescript", "reacthooks", "next", "node", "graphql"]
-const ContentAbout: FunctionComponent = () => {
+const ContentAbout: FunctionComponent<{ pageEvent?: any }> = ({ pageEvent }) => {
   let [current, setCurrent] = useState(0)
   let canvasRef = useRef<HTMLCanvasElement>(null)
   const interval = useRef<any>()
@@ -35,10 +100,10 @@ const ContentAbout: FunctionComponent = () => {
     let canvas = canvasRef.current as HTMLCanvasElement
     let ctx = canvas.getContext("2d")
     if (ctx) {
-      interval.current = setInterval(() => {
-        humanDrawing(ctx)
-        stairsDrawing(ctx)
-      }, 20)
+      // interval.current = setInterval(() => {
+      //   humanDrawing(ctx)
+      //   stairsDrawing(ctx)
+      // }, 20)
     }
 
     return () => {
@@ -47,69 +112,6 @@ const ContentAbout: FunctionComponent = () => {
       // debugger
     }
   }, [])
-  let x = 120
-  let y = 100
-  let z = 15
-  let p = 10
-  let count = 0
-  const humanDrawing = (ctx: any) => {
-    console.log(y)
-    if (y > 15) {
-      ctx.clearRect(0, 0, 400, 400)
-      ctx.beginPath()
-      ctx.arc(x, y, 7, 0, 2 * Math.PI)
-      ctx.moveTo(x - 5, y + 5)
-      ctx.lineTo(x - 5, y + 25) //몸
-
-      let count = 0
-      setInterval(() => {
-        if (count < 50) {
-          ctx.moveTo(x - 6, y + 25)
-          ctx.lineTo(x + 7, y + 45) //오른쪽다리
-        } else {
-          // ctx.moveTo(x - 6, y + 25)
-          // ctx.lineTo(x + 7, y + 35) //오른쪽다리
-
-          ctx.moveTo(x - 6, y + 35)
-          ctx.lineTo(x + 7, y + 45) //오른쪽다리
-
-          if (count > 100) count = 0
-        }
-
-        ctx.stroke()
-        count++
-      }, 10)
-
-      ctx.moveTo(x - 6, y + 25)
-      ctx.lineTo(x - 15, y + 45) //왼쪽다리
-      ctx.stroke()
-
-      x += 1.5
-      y -= 0.8
-    }
-  }
-
-  let x_2 = 135
-  let y_2 = 135
-
-  const stairsDrawing = (ctx: any) => {
-    let x = 135
-    let y = 135
-    for (let i = 0; i < 10; i++) {
-      ctx.rect(x, y, 20, 350)
-      x += 20
-      y -= 10
-    }
-
-    // ctx.fillStyle = "1px solid black"
-    ctx.border = "1px solid red"
-    ctx.fill()
-    ctx.closePath()
-    x -= 0.5
-    y -= 0.8
-    // x_2 += 0.05
-    // y_2 += 0.08
-  }
 
   useEffect(() => {
     if (current < 2) {
@@ -121,7 +123,7 @@ const ContentAbout: FunctionComponent = () => {
 
   return (
     <div>
-      <Content style={{ paddingTop: "140px", padding: "0 50px", width: "80%", margin: "0 auto", boxShadow: "5px 5px 10px 0px rgb(128,128,128)" }}>
+      <Content style={{ paddingTop: "140px", padding: "0 50px", width: "100%", margin: "0 auto", boxShadow: "5px 5px 10px 0px rgb(128,128,128)" }}>
         <h1 style={{ textAlign: "center", textDecoration: "underline", paddingTop: "10px" }}>About</h1>
         <div style={{ display: "inline", float: "right" }}>
           <canvas ref={canvasRef} />
@@ -132,7 +134,9 @@ const ContentAbout: FunctionComponent = () => {
           <br />
           <br />
           {tagData.map((e, i) => (
-            <Tag color="default">{"#" + e}</Tag>
+            <Tag key={i} color="default">
+              {"#" + e}
+            </Tag>
           ))}
         </div>
       </Content>
@@ -141,19 +145,11 @@ const ContentAbout: FunctionComponent = () => {
         <h1 style={{ textAlign: "center", textDecoration: "underline" }}>History</h1>
         <Steps current={current}>
           {histroyData.map((e, i) => (
-            <Step key={e.title} title={e.title} description={e.description} />
+            <Step key={i} title={e.title} description={e.description} />
           ))}
         </Steps>
         <Divider />
       </Content>
-
-      <PageComponent
-        type={"next"}
-        page={2}
-        pageEvent={() => {
-          // pageEvent("next")
-        }}
-      />
     </div>
   )
 }
