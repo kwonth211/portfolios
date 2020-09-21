@@ -1,8 +1,8 @@
 import { keyframes } from "styled-components"
 import React, { FC, ReactNode, useEffect, useState } from "react"
-import "./style.css"
 import { CSSTransition } from "react-transition-group"
 import { PageComponent } from "./../footer"
+import { AnimationBodyNext, AnimationBodyPrev } from "./AnimationStyled"
 export const buttonFade = keyframes`
     from {
         visibility: visibility;
@@ -35,10 +35,19 @@ export const PageAnimation: FC<{ component: ReactNode[]; pageEvent: any; animati
     return (
       <>
         <CSSTransition in={flag} timeout={2000} classNames="list-transition" unmountOnExit appear>
-          <div className="list-body">{Component[page - 1]}</div>
+          <AnimationBodyNext>
+            <PageComponent
+              page={page}
+              type={"prev"}
+              pageEvent={() => {
+                pageEvent("prev")
+              }}
+            />
+            {Component[page - 1]}
+          </AnimationBodyNext>
         </CSSTransition>
         <CSSTransition in={!flag} timeout={2000} classNames="list-transition" unmountOnExit appear>
-          <div className="list-body">
+          <AnimationBodyNext>
             <PageComponent
               page={page}
               type={"prev"}
@@ -47,19 +56,41 @@ export const PageAnimation: FC<{ component: ReactNode[]; pageEvent: any; animati
               }}
             />
             {Component[page]}
-            <PageComponent type={"next"} page={1} pageEvent={pageEvent} />
-          </div>
+            <PageComponent
+              type={"next"}
+              page={page}
+              pageEvent={() => {
+                pageEvent("next")
+              }}
+            />
+          </AnimationBodyNext>
         </CSSTransition>
       </>
     )
   } else {
     return (
       <>
-        <CSSTransition in={!flag} timeout={1500} classNames="list-transition2" unmountOnExit appear>
-          <div className="list-body2">{Component[page]}</div>
+        <CSSTransition in={!flag} timeout={750} classNames="list-transition2" unmountOnExit appear>
+          <AnimationBodyPrev page={page}>
+            <PageComponent
+              page={page}
+              type={"prev"}
+              pageEvent={() => {
+                pageEvent("prev")
+              }}
+            />
+            {Component[page]}
+            <PageComponent
+              type={"next"}
+              page={page}
+              pageEvent={() => {
+                pageEvent("next")
+              }}
+            />
+          </AnimationBodyPrev>
         </CSSTransition>
-        <CSSTransition in={flag} timeout={1500} classNames="list-transition2" unmountOnExit appear>
-          <div className="list-body2">
+        <CSSTransition in={flag} timeout={750} classNames="list-transition2" unmountOnExit appear>
+          <AnimationBodyPrev page={page}>
             <PageComponent
               page={page}
               type={"prev"}
@@ -69,8 +100,14 @@ export const PageAnimation: FC<{ component: ReactNode[]; pageEvent: any; animati
             />
 
             {Component[page + 1]}
-            <PageComponent type={"next"} page={1} pageEvent={pageEvent} />
-          </div>
+            <PageComponent
+              type={"next"}
+              page={page}
+              pageEvent={() => {
+                pageEvent("next")
+              }}
+            />
+          </AnimationBodyPrev>
         </CSSTransition>
       </>
     )

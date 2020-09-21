@@ -123,7 +123,7 @@ const ContentAbout: FunctionComponent<{ pageEvent?: any }> = ({ pageEvent }) => 
 
   return (
     <div>
-      <Content style={{ paddingTop: "140px", padding: "0 50px", width: "100%", margin: "0 auto", boxShadow: "5px 5px 10px 0px rgb(128,128,128)" }}>
+      <Content style={{ paddingTop: "140px", height: "40vh", padding: "0 50px", width: "70%", margin: "0 auto", boxShadow: "5px 5px 10px 0px rgb(128,128,128)" }}>
         <h1 style={{ textAlign: "center", textDecoration: "underline", paddingTop: "10px" }}>About</h1>
         <div style={{ display: "inline", float: "right" }}>
           <canvas ref={canvasRef} />
@@ -141,7 +141,7 @@ const ContentAbout: FunctionComponent<{ pageEvent?: any }> = ({ pageEvent }) => 
         </div>
       </Content>
 
-      <Content style={{ padding: "30px 50px", marginTop: "20px" }}>
+      <Content style={{ padding: "30px 50px", width: "70%", marginTop: "20px", height: "30%" }}>
         <h1 style={{ textAlign: "center", textDecoration: "underline" }}>History</h1>
         <Steps current={current}>
           {histroyData.map((e, i) => (
@@ -150,6 +150,7 @@ const ContentAbout: FunctionComponent<{ pageEvent?: any }> = ({ pageEvent }) => 
         </Steps>
         <Divider />
       </Content>
+      {/* <PageComponent type={"next"} page={1} pageEvent={pageEvent} /> */}
     </div>
   )
 }
