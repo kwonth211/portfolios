@@ -1,7 +1,11 @@
-import styled, { css } from "styled-components"
-import { buttonFade } from "./Animation"
+import styled, { css, keyframes } from "styled-components"
+import { buttonFade } from "./animation/Animation"
 
 interface IContentDiv {}
+
+interface ICursor {
+  children: any
+}
 interface ICenterDiv {
   // left: string
   // top: string
@@ -14,7 +18,7 @@ interface IPageButtion {
 export const ContentDiv = styled.div<IContentDiv>`
   background: rgb(25, 25, 25);
   width: 100vw;
-  height: 90vh;
+  height: 92vh;
   -webkit-box-shadow: 0 10px 6px -6px rgb(221, 221, 221);
   -moz-box-shadow: 0 10px 6px -6px rgb(221, 221, 221);
   box-shadow: 0 10px 6px -6px rgb(221, 221, 221);
@@ -45,4 +49,17 @@ export const PageButton = styled.button<IPageButtion>`
     css`
       animation: ${buttonFade} 300ms steps(5, start) infinite alternate;
     `}
+`
+
+export const Cursor = styled.span<ICursor>`
+  background: inherit;
+  border: 0px;
+  z-index: 1;
+  cursor: pointer;
+  font-size: 20pt;
+  ${(props) => {
+    return css`
+      animation: ${buttonFade} 300ms steps(5, start) infinite alternate;
+    `
+  }}
 `

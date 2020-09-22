@@ -1,10 +1,9 @@
-import React, { FC, ReactNode, useEffect, useState } from "react"
+import React, { FC, useEffect, useState } from "react"
 import { Layout } from "antd"
 
 import { PageButton } from "./../common/StyledComponents"
 // import * as ReactCSSTransitionGroup from "react-addons-css-transition-group"
 import styled from "styled-components"
-import { PauseOutlined } from "@ant-design/icons"
 
 const { Footer: FooterView } = Layout
 
@@ -38,13 +37,14 @@ const StyledContent = styled(FooterView)<IPageButton>`
 
     return background
   }};
-  margin-bottom: ${(props) => (props.type === "prev" ? "10px" : "")};
+  margin-bottom: ${(props) => (props.type === "prev" ? "" : "")};
   cursor: pointer;
   z-index: 0;
-  border: ${(props) => (props.page !== 0 ? "1px solid rgb(207,207,207)" : "")};
+  border: ${(props) => (props.page !== 0 ? "1px solid rgb(238,238,238)" : "")};
   display: ${(props) => (props.page === 0 && props.type === "prev" ? "none" : "")};
   ${(props) => (props.type === "next" ? "bottom:0;position:fixed;" : "")};
   width: 100%;
+  padding: 12px 50px 12px 50px;
 `
 
 // ⥣⥤

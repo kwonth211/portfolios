@@ -1,7 +1,7 @@
 import { keyframes } from "styled-components"
 import React, { FC, ReactNode, useEffect, useState } from "react"
 import { CSSTransition } from "react-transition-group"
-import { PageComponent } from "./../footer"
+import { PageComponent } from "../../footer"
 import { AnimationBodyNext, AnimationBodyPrev } from "./AnimationStyled"
 export const buttonFade = keyframes`
     from {

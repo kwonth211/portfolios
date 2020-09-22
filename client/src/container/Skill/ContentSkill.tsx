@@ -1,75 +1,70 @@
 import { Card, Col, Row } from "antd"
 import React, { FC } from "react"
-import { Layout, Tag, Steps, Divider, Popover, Image } from "antd"
-
+import { Layout, List, Avatar } from "antd"
+import { GradientStyled } from "./styled"
 const { Content } = Layout
-const { Step } = Steps
 
-const skills = [
-  {
-    title: "Hard Skills",
-    subList: [
-      { img: require("./../../media/html.png"), name: "HTML / CSS" },
-      { img: "", name: "JavaScript (ES6+)" },
-      { img: "", name: "Typescript" },
-      { img: "", name: "React" },
-    ],
-  },
-  {
-    title: "Soft Skills",
-    subList: [
-      { img: "", name: "RestAPI" },
-      { img: "", name: "GraphQL" },
-      { img: "", name: "ContentAPI" },
-      { img: "", name: "Recoil" },
-    ],
-  },
-  {
-    title: "Progressing",
-    subList: [
-      { img: "", name: "Node" },
-      { img: "", name: "java" },
-      { img: "", name: "python" },
-    ],
-  },
-]
 const ContentSkill: FC = () => {
-  return (
-    // // <div className="site-card-wrapper">
+  const skills = [
+    {
+      title: "Front-end",
+      subList: [
+        { img: require("./../../media/html.png"), name: "HTML / CSS" },
+        { img: require("./../../media/javascript.png"), name: "JavaScript (ES6+)" },
+        { img: require("./../../media/typescript.jpeg"), name: "Typescript" },
+        { img: require("./../../media/Jquery.gif"), name: "JQuery" },
+        { img: require("./../../media/react.png"), name: "React" },
+      ],
+    },
+    {
+      title: "Network/Environment",
+      subList: [
+        { img: require("./../../media/html.png"), name: "RestFulAPI" },
+        { img: require("./../../media/graphql.png"), name: "GraphQL" },
+        { img: require("./../../media/mongodb.png"), name: "MongoDB" },
+      ],
+    },
+    {
+      title: "Back-end",
+      subList: [
+        { img: require("./../../media/nodejs.png"), name: "Node" },
+        { img: require("./../../media/Java.png"), name: "Java" },
+        { img: require("./../../media/python.png"), name: "Python" },
+      ],
+    },
+  ]
 
-    // // </div>
-    <div>
+  //   return <div>asdasdasdasdsasa</div>
+
+  return (
+    <GradientStyled>
       <Content style={{ width: "80%", margin: "0 auto" }}>
-        <h1 style={{ textAlign: "center", textDecoration: "underline", paddingTop: "10px" }}>Skills</h1>
-        <div style={{ display: "inline", float: "right" }}>{/* <canvas ref={canvasRef} /> */}</div>
-        <div className="site-layout-content">
-          <Content style={{ height: "50%", width: "70%", margin: "0 auto" }}>
-            <Row gutter={40}>
-              {skills.map((e) => (
-                <Col span={8}>
-                  <Card style={{ height: "400px" }} title={e.title} extra={<a href="#">more</a>}>
-                    {/* <p>Card content</p>
-                    <p>Card content</p>
-                    <p>Card content</p> */}
-                    {e.subList.map((tech) => (
-                      <div>
-                        {" "}
-                        <Image width={30} src={tech.img} /> {tech.name}
-                      </div>
-                    ))}
-                  </Card>
-                </Col>
-              ))}
-            </Row>
-          </Content>
-        </div>
-        <Card style={{ width: "70%", margin: "0 auto" }}>
-          <p>ETC.</p>
-          <p>Card content</p>
-          <p>Card content</p>
+        <Content style={{ height: "100%", width: "70%", margin: "0 auto" }}>
+          <Row gutter={40}>
+            {skills.map((e, i) => (
+              <Col key={i} span={8}>
+                <Card style={{ height: "100%" }} title={e.title} extra={<a href="#">more</a>}>
+                  <List
+                    itemLayout="horizontal"
+                    dataSource={e.subList}
+                    renderItem={(tech) => (
+                      <List.Item>
+                        <List.Item.Meta avatar={<Avatar src={tech.img} />} title={tech.name} />
+                      </List.Item>
+                    )}
+                  />
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        </Content>
+
+        <Card style={{ width: "70%", margin: "0 auto", marginTop: "1%" }}>
+          <h2>etc.</h2>
+          Parcel / BootStrap / Semantic-ui / Chrome Extension / Mocha / Typography / react-router / Passport / babel / lodash / ejs / ...
         </Card>
       </Content>
-    </div>
+    </GradientStyled>
   )
 }
 

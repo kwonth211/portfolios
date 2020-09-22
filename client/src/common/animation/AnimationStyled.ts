@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 
 interface AnimationBodyPrev {
   page: number
@@ -22,7 +22,7 @@ export const AnimationBodyNext = styled.div`
   &.list-transition-enter-active,
   &.list-transition-appear-active {
     top: 7%;
-    height: 100%;
+    height: 90vh;
     width: 100%;
     max-height: 100%;
     background-color: white;
