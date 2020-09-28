@@ -25,15 +25,22 @@ export const CardImage = styled.img`
   opacity: 0.7;
 `
 
-
-export const wrap = styled.div`
-width: 40%;
-margin: 10px auto;
-border: 1px solid #000000;
+export const Wrap = styled.div`
+  background-size: cover;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
 `
 
-export const text = styled.div`
-padding: 5px 10px;
-background-color: yellow;
-text-align: center;
+export const Text = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 5rem;
+  color: white;
+  z-index: 2;
+  text-align: center;
 `

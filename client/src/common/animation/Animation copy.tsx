@@ -21,30 +21,22 @@ export const buttonFade = keyframes`
 /// animation padding 지우기..
 export const PageAnimation: FC<{ component: ReactNode[]; pageEvent: any; animationMoveType: string; page: number }> = ({ component: Component, pageEvent, animationMoveType, page }) => {
   const [flag, setFlag] = useState(true)
-  const [flag2, setFlag2] = useState(false)
-  let [componentArray, setComponentArray] = useState<any>([
-    <CSSTransition in={!flag} timeout={2000} classNames="list-transition" unmountOnExit appear>
-      <AnimationBodyNext>
-        <PageComponent
-          page={page}
-          type={"prev"}
-          pageEvent={() => {
-            pageEvent("prev")
-          }}
-        />
-        {Component[page - 1]}
-      </AnimationBodyNext>
-    </CSSTransition>,
-  ])
   useEffect(() => {
-    setTimeout(() => {
-      setFlag(true)
-      setFlag(false)
-    })
+    if (animationMoveType === "next") {
+      setTimeout(() => {
+        // setFlag(true)
+        // setFlag(false)
+      })
+    }
+    setFlag(!flag)
+    // setTimeout(() => {
+    //   setFlag(!flag)
+    // }, 300)
+
+    // setFlag(true)
   }, [Component, page])
 
   const test = () => {
-    console.log(page)
     return (
       <>
         <CSSTransition in={flag} timeout={2000} classNames="list-transition" unmountOnExit appear>

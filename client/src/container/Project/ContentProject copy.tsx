@@ -17,9 +17,12 @@ const ContentProject: FC = () => {
                 hoverable
                 bodyStyle={{ display: "none" }}
                 cover={
-                  <>
+                  <Wrap>
                     <CardImage alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />
-                  </>
+                    <Text>
+                      <p> dasdadsadas</p>
+                    </Text>
+                  </Wrap>
                 }
               ></CardStyled>
             </Col>
