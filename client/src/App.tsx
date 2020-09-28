@@ -1,7 +1,7 @@
 import React, { useState, useEffect, ReactNode, useMemo } from "react"
 import { Header } from "./header"
 import "antd/dist/antd.css"
-import { ContentAbout, ContentSkill, ContentHome } from "./container"
+import { ContentAbout, ContentSkill, ContentHome, ContentProject } from "./container"
 import { PageAnimation } from "./common/animation/Animation"
 import useScroll from "./common/customHooks/Wheel"
 
@@ -52,7 +52,8 @@ function App() {
       throttleFlag = false
     }, 1500)
   }
-  const PageArray = useMemo(() => [<ContentHome pageEvent={pageEvent} />, <ContentAbout />, <ContentSkill />], [page])
+  const PageArray = useMemo(() => [<ContentHome pageEvent={pageEvent} />, <ContentAbout />, <ContentSkill />, <ContentProject />], [page, type])
+  // const PageArray = [<ContentHome pageEvent={pageEvent} />, <ContentAbout />, <ContentSkill />]
 
   return (
     <div style={{ background: "rgb(249,249,249)" }}>
