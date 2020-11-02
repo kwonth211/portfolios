@@ -1,28 +1,28 @@
-import styled, { css, keyframes } from "styled-components"
-import { buttonFade } from "./animation/Animation"
+import styled, { css, keyframes } from "styled-components";
+import { buttonFade } from "./animation/AnimationNext";
 
 interface IContentDiv {}
 
 interface ICursor {
-  children: any
+  children: any;
 }
 interface ICenterDiv {
   // left: string
   // top: string
-  fontSize: string
+  fontSize: string;
 }
 
 interface IPageButtion {
-  animation?: boolean
+  animation?: boolean;
 }
 export const ContentDiv = styled.div<IContentDiv>`
   background: rgb(25, 25, 25);
   width: 100vw;
-  height: 92vh;
+  height: 100vh;
   -webkit-box-shadow: 0 10px 6px -6px rgb(221, 221, 221);
   -moz-box-shadow: 0 10px 6px -6px rgb(221, 221, 221);
   box-shadow: 0 10px 6px -6px rgb(221, 221, 221);
-`
+`;
 export const CenterDiv = styled.div`
   color: white;
   font-size: ${(props: ICenterDiv) => props.fontSize};
@@ -37,7 +37,7 @@ export const CenterDiv = styled.div`
   width: 100%;
   height: 150px;
   line-height: 50px;
-`
+`;
 
 export const PageButton = styled.button<IPageButtion>`
   background: inherit;
@@ -49,7 +49,7 @@ export const PageButton = styled.button<IPageButtion>`
     css`
       animation: ${buttonFade} 300ms steps(5, start) infinite alternate;
     `}
-`
+`;
 
 export const Cursor = styled.span<ICursor>`
   background: inherit;
@@ -60,6 +60,6 @@ export const Cursor = styled.span<ICursor>`
   ${(props) => {
     return css`
       animation: ${buttonFade} 300ms steps(5, start) infinite alternate;
-    `
+    `;
   }}
-`
+`;

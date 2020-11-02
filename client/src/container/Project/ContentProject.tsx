@@ -1,51 +1,57 @@
-import React, { FC, useState, useEffect, useRef } from "react"
+import React, { FC, useState, useEffect, useRef } from "react";
 
-import { Card, Avatar, Col, Row, Carousel } from "antd"
-import { CardStyled, CarouselStyled, RowStyled, CardImage, Wrap, Text } from "./Styled"
-const { Meta } = Card
+import { Card, Avatar, Col, Row, Carousel } from "antd";
+import {
+  CardStyled,
+  CarouselStyled,
+  RowStyled,
+  CardImage,
+  Wrap,
+  Text,
+  WrapperCard,
+} from "./Styled";
+import { PageComponent } from "./../../footer";
 
-const ContentProject: FC = () => {
+const { Meta } = Card;
+
+const ContentProject: FC<{ pageEvent?: any }> = ({ pageEvent }) => {
   return (
     <>
-      <h1 style={{ textAlign: "center", textDecoration: "underline", paddingTop: "20px" }}>Project</h1>
+      <PageComponent type={"prev"} page={3} pageEvent={pageEvent} />
 
-      <CarouselStyled style={{ display: "flex" }} autoplay autoplaySpeed={4000}>
-        <div>
-          <RowStyled gutter={32}>
-            <Col span={4}>
-              <CardStyled
-                hoverable
-                bodyStyle={{ display: "none" }}
-                cover={
-                  <>
-                    <CardImage alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />
-                  </>
-                }
-              ></CardStyled>
-            </Col>
-            <Col span={4}>
-              <CardStyled hoverable bodyStyle={{ display: "none" }} cover={<CardImage alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}></CardStyled>
-            </Col>
-            <Col span={4}>
-              <CardStyled hoverable bodyStyle={{ display: "none" }} cover={<CardImage alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}></CardStyled>
-            </Col>
-          </RowStyled>
-        </div>
-        {/* <div>
-          <RowStyled gutter={32}>
-            <Col span={4}>
-              <CardStyled hoverable bodyStyle={{ display: "none" }} cover={<CardImage alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}></CardStyled>
-            </Col>
-            <Col span={4}>
-              <CardStyled hoverable bodyStyle={{ display: "none" }} cover={<CardImage alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}></CardStyled>
-            </Col>
-            <Col span={4}>
-              <CardStyled hoverable bodyStyle={{ display: "none" }} cover={<CardImage alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}></CardStyled>
-            </Col>
-          </RowStyled>
-        </div> */}
-      </CarouselStyled>
+      <h1
+        style={{
+          textAlign: "center",
+          textDecoration: "underline",
+          paddingTop: "20px",
+        }}
+      >
+        Project
+      </h1>
+
+      <WrapperCard>
+        {[1, 2, 3, 4, 5, 6, 7].map((e, i) => (
+          <Card
+            style={{ width: 300 }}
+            cover={
+              <img
+                alt="example"
+                src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+              />
+            }
+          >
+            <Meta
+              avatar={
+                <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+              }
+              title="Card title"
+              description="This is the description"
+            />
+          </Card>
+        ))}
+      </WrapperCard>
+      <PageComponent type={"next"} page={3} pageEvent={pageEvent} />
     </>
-  )
-}
-export default ContentProject
+  );
+};
+export default ContentProject;

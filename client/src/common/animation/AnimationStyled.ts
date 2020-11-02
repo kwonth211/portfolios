@@ -1,7 +1,7 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 interface AnimationBodyPrev {
-  page: number
+  page: number;
 }
 
 export const AnimationBodyNext = styled.div`
@@ -11,7 +11,7 @@ export const AnimationBodyNext = styled.div`
   background-color: white;
   box-sizing: border-box;
   width: 100%;
-  height: 90vh;
+  height: 100vh;
   overflow: hidden;
   &.list-transition-enter,
   &.list-transition-appear {
@@ -40,7 +40,7 @@ export const AnimationBodyNext = styled.div`
     height: 0%;
     transition: all 1300ms;
   }
-`
+`;
 export const AnimationBodyPrev = styled.div<AnimationBodyPrev>`
   position: absolute;
   top: ${(props) => (props.page === 0 ? "-9.2%" : "0%")};
@@ -48,7 +48,7 @@ export const AnimationBodyPrev = styled.div<AnimationBodyPrev>`
   background-color: white;
   box-sizing: border-box;
   width: 100%;
-  height: 90vh;
+  height: 100vh;
   margin-top: 87px;
   overflow: hidden;
 
@@ -85,4 +85,4 @@ export const AnimationBodyPrev = styled.div<AnimationBodyPrev>`
 
     transition: all 1200ms;
   }
-`
+`;

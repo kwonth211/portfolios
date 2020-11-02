@@ -1,5 +1,15 @@
-import styled from "styled-components"
-import { Card, Avatar, Col, Row, Carousel } from "antd"
+import styled from "styled-components";
+import { Card, Avatar, Col, Row, Carousel } from "antd";
+
+export const WrapperCard = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  & > div {
+    margin: 15px;
+  }
+`;
 
 export const CardStyled = styled(Card)`
   height: 100%;
@@ -8,22 +18,22 @@ export const CardStyled = styled(Card)`
   align-self: flexStart;
   justify-content: center;
   align-items: center;
-`
+`;
 export const CarouselStyled = styled(Carousel)`
   display: flex;
   height: 50vh;
   align-items: center;
-`
+`;
 export const RowStyled = styled(Row)`
   display: flex;
   padding: 20px;
   justify-content: center;
   // justify-content: space-between;
-`
+`;
 
 export const CardImage = styled.img`
   opacity: 0.7;
-`
+`;
 
 export const Wrap = styled.div`
   background-size: cover;
@@ -32,7 +42,7 @@ export const Wrap = styled.div`
   width: 100%;
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 1;
-`
+`;
 
 export const Text = styled.div`
   position: absolute;
@@ -43,4 +53,4 @@ export const Text = styled.div`
   color: white;
   z-index: 2;
   text-align: center;
-`
+`;

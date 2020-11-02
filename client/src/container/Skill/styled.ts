@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components"
+import styled, { keyframes } from "styled-components";
 
 const gradientBG = keyframes`
 0% {
@@ -10,11 +10,11 @@ const gradientBG = keyframes`
   100% {
     background-position: 0% 50%;
   }
-`
+`;
 
 export const GradientStyled = styled.div`
   margin: 0 auto;
-  padding-top: 30px;
+  padding-top: 100px;
   width: 100%;
   height: 100vh;
   font-family: "Exo", sans-serif;
@@ -23,4 +23,4 @@ export const GradientStyled = styled.div`
   background-size: 400% 400%;
   -webkit-animation: gradientBG 10s ease infinite;
   animation: ${gradientBG} 10s ease infinite;
-`
+`;
